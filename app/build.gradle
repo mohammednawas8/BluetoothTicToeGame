@@ -20,6 +20,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField("String","BLUETOOTH_UUID",BLUETOOTH_UUID)
     }
 
     buildTypes {
