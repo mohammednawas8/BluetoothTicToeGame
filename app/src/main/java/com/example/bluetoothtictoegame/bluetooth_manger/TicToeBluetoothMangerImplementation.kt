@@ -19,7 +19,7 @@ private val TAG = "TicToeBluetoothManger"
 
 @SuppressLint("MissingPermission")
 class TicToeBluetoothMangerImplementation(
-    private val bluetoothAdapter: BluetoothAdapter?,
+    private val bluetoothAdapter: BluetoothAdapter,
 ) : TicToeBluetoothManger {
 
     private var _serverAcceptState: MutableStateFlow<Resource<BluetoothSocket>> =
@@ -27,13 +27,12 @@ class TicToeBluetoothMangerImplementation(
     override val serverAcceptState = _serverAcceptState.asStateFlow()
 
     override fun shouldEnableBluetooth(): Boolean {
-        if (bluetoothAdapter == null)
-            return false
+
         return bluetoothAdapter.isEnabled.not()
     }
 
     override fun discoverDevices() {
-        bluetoothAdapter?.startDiscovery()
+        bluetoothAdapter.startDiscovery()
     }
 
     override suspend fun connectToHostingDevice(hostingDevice: BluetoothDevice): Resource<BluetoothSocket> {
@@ -53,7 +52,7 @@ class TicToeBluetoothMangerImplementation(
     }
 
     override fun cancelDiscovery() {
-        bluetoothAdapter?.cancelDiscovery()
+        bluetoothAdapter.cancelDiscovery()
     }
 
     override fun closeConnection(bluetoothSocket: BluetoothSocket) {
@@ -68,7 +67,7 @@ class TicToeBluetoothMangerImplementation(
     override suspend fun listenToRequest() {
         val bluetoothUUID = UUID.fromString(BuildConfig.BLUETOOTH_UUID)
         val serverSocket: BluetoothServerSocket? by lazy {
-            bluetoothAdapter?.listenUsingRfcommWithServiceRecord("TicToe", bluetoothUUID)
+            bluetoothAdapter.listenUsingRfcommWithServiceRecord("TicToe", bluetoothUUID)
         }
         _serverAcceptState.emit(Resource.Loading())
         withContext(Dispatchers.IO) {

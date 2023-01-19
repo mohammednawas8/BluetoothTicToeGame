@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.example.bluetoothtictoegame'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.bluetoothtictoegame"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -68,4 +68,11 @@ dependencies {
     //Dagger hilt
     implementation "com.google.dagger:hilt-android:2.38.1"
     kapt "com.google.dagger:hilt-compiler:2.38.1"
+
+    //Compose accompanist
+    implementation "com.google.accompanist:accompanist-permissions:0.28.0"
+
+    //Hilt for compose
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
 }

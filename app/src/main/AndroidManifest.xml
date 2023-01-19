@@ -2,6 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--
+     Legacy Permissions are required for API Level > 30 (Android 11)
+     So the Legacy permission are required for Android 12 and above
+     !-->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+    <!--
+       The following permissions are only required for Android 12 and above (SCAN,ADVERTISE,CONNECT).
+       - SCAN: required to scan for nearby devices, and always attach neverForLocation if the app doesn't need to access the physical location.
+       - ADVERTISE: required if the app wants to make the device discoverable.
+       - CONNECT: required to connect devices via bluetooth && to enable bluetooth from the app.
+    !-->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!--
+        For Android 11 and lower
+    !-->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <uses-feature android:name="android.hardware.bluetooth"/>
+
     <application
         android:name=".BluetoothApplication"
         android:allowBackup="true"
