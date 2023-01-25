@@ -25,7 +25,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.bluetoothtictoegame.screens.Navigation
 import com.example.bluetoothtictoegame.screens.permissions_screen.components.PermissionRationalDialog
 import com.example.bluetoothtictoegame.screens.permissions_screen.components.TicToeButton
-import com.example.bluetoothtictoegame.screens.permissions_screen.components.rememberAccessBackgroundLocation
 import com.example.bluetoothtictoegame.screens.permissions_screen.components.rememberDevicePermissions
 import com.example.bluetoothtictoegame.ui.theme.BluetoothTicToeGameTheme
 import com.google.accompanist.permissions.*
