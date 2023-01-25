@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.bluetoothtictoegame.screens.Navigation
+import com.example.bluetoothtictoegame.screens.client_screen.ClientScreen
 import com.example.bluetoothtictoegame.screens.home_screen.HomeScreen
 import com.example.bluetoothtictoegame.screens.permissions_screen.PermissionsScreen
 import com.example.bluetoothtictoegame.ui.theme.BluetoothTicToeGameTheme
@@ -44,6 +45,7 @@ class MainActivity : ComponentActivity() {
                             HomeScreen(navController = navController)
                         }
                         composable(Navigation.ClientScreen.rout) {
+                            ClientScreen(navController = navController)
                         }
                     }
                 }
