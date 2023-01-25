@@ -55,6 +55,11 @@ class TicToeBluetoothMangerImplementation(
         bluetoothAdapter.cancelDiscovery()
     }
 
+    override fun getAlreadyPairedDevices(): List<BluetoothDevice> {
+        val pairedDevices: Set<BluetoothDevice>? = bluetoothAdapter.bondedDevices
+        return pairedDevices?.toList() ?: emptyList()
+    }
+
     override fun closeConnection(bluetoothSocket: BluetoothSocket) {
         bluetoothSocket.close()
     }

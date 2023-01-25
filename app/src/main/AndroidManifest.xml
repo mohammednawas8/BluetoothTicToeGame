@@ -13,21 +13,32 @@
         android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="30" />
     <!--
-       The following permissions are only required for Android 12 and above (SCAN,ADVERTISE,CONNECT).
+       The following permissions are only required for Android 12 = API LEVEL 31 and above (SCAN,ADVERTISE,CONNECT).
        - SCAN: required to scan for nearby devices, and always attach neverForLocation if the app doesn't need to access the physical location.
        - ADVERTISE: required if the app wants to make the device discoverable.
        - CONNECT: required to connect devices via bluetooth && to enable bluetooth from the app.
     !-->
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
+
     <!--
-        For Android 11 and lower
+      For Android 11 = API level 30 and lower
+  !-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+    <!--
+        Only For Android 10 = API LEVEL 29
     !-->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-    <uses-feature android:name="android.hardware.bluetooth"/>
+
+    <uses-feature android:name="android.hardware.bluetooth" />
 
     <application
         android:name=".BluetoothApplication"
@@ -55,6 +66,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-    </application>
 
+
+
+    </application>
 </manifest>

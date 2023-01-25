@@ -12,6 +12,7 @@ interface TicToeBluetoothManger {
 
     fun discoverDevices()
     fun cancelDiscovery()
+    fun getAlreadyPairedDevices(): List<BluetoothDevice>
 
     suspend fun connectToHostingDevice(hostingDevice: BluetoothDevice): Resource<BluetoothSocket>
 
