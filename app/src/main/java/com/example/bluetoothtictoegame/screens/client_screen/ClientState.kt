@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice
 data class ClientState(
     val searchingForHosts: Boolean = false,
     val shouldEnableBluetooth: Boolean = false,
-    val alreadyPairedDevices: List<BluetoothDevice> = emptyList()
+    val newDevices: List<BluetoothDevice> = emptyList(),
+    val alreadyPairedDevices: List<BluetoothDevice> = emptyList(),
 ) {
 }

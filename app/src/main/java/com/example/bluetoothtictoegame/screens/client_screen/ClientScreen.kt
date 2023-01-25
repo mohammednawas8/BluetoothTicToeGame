@@ -38,11 +38,10 @@ fun ClientScreen(
 
     val state = viewModel.state.collectAsState().value
 
-    val scannedDevices = remember {
-        mutableStateListOf<BluetoothDevice>()
-    }
 
-    ScannedDevicesReceiver(context) { scannedDevices.add(it) }
+    ScannedDevicesReceiver(context) {
+       viewModel.newDeviceFound(it)
+    }
 
 
     //Enable the bluetooth if it's turned off
@@ -72,7 +71,7 @@ fun ClientScreen(
         )
         Divider(modifier = Modifier.fillMaxWidth().padding(10.dp))
         Spacer(modifier = Modifier.height(5.dp))
-        scannedDevices.forEach {
+        state.newDevices.forEach {
             BluetoothDeviceItem(
                 bluetoothDevice = it,
                 modifier = Modifier.padding(horizontal = 16.dp)

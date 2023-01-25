@@ -1,5 +1,6 @@
 package com.example.bluetoothtictoegame.screens.client_screen
 
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothServerSocket
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -42,6 +43,15 @@ class ClientViewModel @Inject constructor(
                 delay(1000)
             }
             _state.emit(state.value.copy(searchingForHosts = false))
+        }
+    }
+
+    fun newDeviceFound(bluetoothDevice: BluetoothDevice) {
+        if (!_state.value.newDevices.contains(bluetoothDevice)) {
+            val newDevices = _state.value.newDevices.plus(bluetoothDevice)
+            viewModelScope.launch {
+                _state.emit(_state.value.copy(newDevices = newDevices))
+            }
         }
     }
 
