@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.bluetoothtictoegame.screens.Navigation
 import com.example.bluetoothtictoegame.screens.permissions_screen.components.PermissionRationalDialog
 import com.example.bluetoothtictoegame.screens.permissions_screen.components.TicToeButton
+import com.example.bluetoothtictoegame.screens.permissions_screen.components.rememberAccessBackgroundLocation
 import com.example.bluetoothtictoegame.screens.permissions_screen.components.rememberDevicePermissions
 import com.example.bluetoothtictoegame.ui.theme.BluetoothTicToeGameTheme
 import com.google.accompanist.permissions.*
@@ -39,6 +40,7 @@ fun PermissionsScreen(
 
     val permissionsState =
         rememberMultiplePermissionsState(permissions = rememberDevicePermissions())
+
 
     var rationalDialogState: RationalDialogState? by remember {
         mutableStateOf(null)
@@ -57,8 +59,9 @@ fun PermissionsScreen(
     DisposableEffect(key1 = lifecycleOwner, effect = {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_CREATE) {
-                if (!permissionsState.shouldShowRationale)
+                if (!permissionsState.shouldShowRationale) {
                     permissionsState.launchMultiplePermissionRequest()
+                }
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)
@@ -144,7 +147,7 @@ fun PermissionsScreen(
 
     if (permissionsState.allPermissionsGranted) {
         LaunchedEffect(key1 = true) {
-            navController.navigate(Navigation.HomeScreen.rout,){
+            navController.navigate(Navigation.HomeScreen.rout) {
                 navController.popBackStack()
             }
         }
