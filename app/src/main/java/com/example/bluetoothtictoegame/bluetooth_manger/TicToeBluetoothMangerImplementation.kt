@@ -60,8 +60,8 @@ class TicToeBluetoothMangerImplementation(
         return pairedDevices?.toList() ?: emptyList()
     }
 
-    override fun closeConnection(bluetoothSocket: BluetoothSocket) {
-        bluetoothSocket.close()
+    override fun closeConnection(bluetoothSocket: BluetoothSocket?) {
+        bluetoothSocket?.close()
     }
 
     /**

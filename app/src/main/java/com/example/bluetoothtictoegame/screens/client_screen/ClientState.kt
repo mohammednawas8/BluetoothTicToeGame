@@ -7,5 +7,4 @@ data class ClientState(
     val shouldEnableBluetooth: Boolean = false,
     val newDevices: List<BluetoothDevice> = emptyList(),
     val alreadyPairedDevices: List<BluetoothDevice> = emptyList(),
-) {
-}
+)

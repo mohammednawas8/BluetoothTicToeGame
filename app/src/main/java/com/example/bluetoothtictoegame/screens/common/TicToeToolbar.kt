@@ -19,7 +19,7 @@ fun TicToeTopAppBar(
     title: String,
     action: String,
     isActionLoading: Boolean,
-    actionClick: () -> Unit
+    actionClick: (() -> Unit)? = null
 ) {
     TopAppBar(modifier = modifier, backgroundColor = MaterialTheme.colors.primarySurface) {
         Row(
@@ -34,10 +34,14 @@ fun TicToeTopAppBar(
                 modifier = Modifier.padding(start = 10.dp)
             )
 
-            if (isActionLoading){
+            if (isActionLoading) {
                 CircularProgressIndicator(color = Color.White, modifier = Modifier.size(30.dp))
-            }else{
-                TextButton(onClick = actionClick) {
+            } else {
+                TextButton(onClick = {
+                    if (actionClick != null) {
+                        actionClick()
+                    }
+                }) {
                     Text(text = action, color = Color.White, fontSize = 14.sp)
                 }
             }

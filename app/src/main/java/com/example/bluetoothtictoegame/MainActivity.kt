@@ -15,6 +15,7 @@ import com.example.bluetoothtictoegame.screens.Navigation
 import com.example.bluetoothtictoegame.screens.client_screen.ClientScreen
 import com.example.bluetoothtictoegame.screens.home_screen.HomeScreen
 import com.example.bluetoothtictoegame.screens.permissions_screen.PermissionsScreen
+import com.example.bluetoothtictoegame.screens.server_screen.ServerScreen
 import com.example.bluetoothtictoegame.ui.theme.BluetoothTicToeGameTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,6 +47,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Navigation.ClientScreen.rout) {
                             ClientScreen(navController = navController)
+                        }
+                        composable(Navigation.ServerScreen.rout){
+                            ServerScreen()
                         }
                     }
                 }

@@ -67,7 +67,7 @@
                 android:value="" />
         </activity>
 
-
+        <receiver android:name=".bluetooth_manger.DiscoverableBroadcastReceiver"/>
 
     </application>
 </manifest>

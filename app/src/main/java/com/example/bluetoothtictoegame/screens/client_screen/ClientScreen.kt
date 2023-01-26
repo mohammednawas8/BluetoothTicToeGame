@@ -12,7 +12,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -26,7 +25,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.bluetoothtictoegame.MainActivity
 import com.example.bluetoothtictoegame.screens.common.TicToeTopAppBar
-import com.example.bluetoothtictoegame.screens.enableBluetooth
 
 @SuppressLint("MissingPermission")
 @Composable
@@ -39,13 +37,9 @@ fun ClientScreen(
     val state = viewModel.state.collectAsState().value
 
 
-    ScannedDevicesReceiver(context) {
+    ScanDevicesReceiver(context) {
        viewModel.newDeviceFound(it)
     }
-
-
-    //Enable the bluetooth if it's turned off
-    EnableBluetoothDialog(state, context)
 
     Column(
         modifier = Modifier
@@ -101,7 +95,7 @@ fun ClientScreen(
 }
 
 @Composable
-private fun ScannedDevicesReceiver(context: MainActivity, deviceFound: (BluetoothDevice) -> Unit) {
+private fun ScanDevicesReceiver(context: MainActivity, deviceFound: (BluetoothDevice) -> Unit) {
     DisposableEffect(key1 = true, effect = {
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
@@ -144,16 +138,6 @@ fun BluetoothDeviceItem(
     }
 }
 
-@Composable
-private fun EnableBluetoothDialog(
-    state: ClientState,
-    context: MainActivity
-) {
-    LaunchedEffect(key1 = state.shouldEnableBluetooth) {
-        if (state.shouldEnableBluetooth)
-            enableBluetooth(context)
-    }
-}
 
 
 

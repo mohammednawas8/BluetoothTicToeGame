@@ -25,5 +25,5 @@ interface TicToeBluetoothManger {
 //    TODO: add the parameter of TicTacToeData value
 //    fun transmitData()
 
-    fun closeConnection(bluetoothSocket: BluetoothSocket)
+    fun closeConnection(bluetoothSocket: BluetoothSocket?)
 }

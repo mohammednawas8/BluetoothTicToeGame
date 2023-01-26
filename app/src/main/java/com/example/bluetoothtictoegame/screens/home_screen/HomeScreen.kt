@@ -27,7 +27,7 @@ import com.example.bluetoothtictoegame.ui.theme.BluetoothTicToeGameTheme
 fun HomeScreen(
     navController: NavController
 ) {
-    Log.d("Test", "test")
+    //TODO: Enable the bluetooth
     Box(
         modifier = Modifier
             .fillMaxSize()

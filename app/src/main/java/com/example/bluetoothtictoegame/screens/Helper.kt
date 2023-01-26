@@ -6,10 +6,19 @@ import android.content.Context
 import android.content.Intent
 import com.example.bluetoothtictoegame.MainActivity
 
-const val activityResultCode = 123
+const val enableBluetoothRequestCode = 3
 
 @SuppressLint("MissingPermission")
-fun enableBluetooth(context: MainActivity) {
+fun enableBluetooth(activity: MainActivity) {
     val intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-    context.startActivityForResult(intent, activityResultCode)
+    activity.startActivityForResult(intent, enableBluetoothRequestCode)
+}
+
+const val setDeviceDiscoverableRequestCode = 4
+const val defaultDiscoverableDuration = 300
+@SuppressLint("MissingPermission")
+fun makePhoneDiscoverable(activity: MainActivity, discoverableDuration: Int = defaultDiscoverableDuration) {
+    val intent = Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE)
+    intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, discoverableDuration)
+    activity.startActivityForResult(intent, setDeviceDiscoverableRequestCode)
 }

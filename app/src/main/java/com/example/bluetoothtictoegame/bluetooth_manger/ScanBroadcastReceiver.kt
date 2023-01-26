@@ -8,8 +8,6 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 private val TAG = "BluetoothScanReceiver"
 class BluetoothScanBroadcastReceiver : BroadcastReceiver() {
